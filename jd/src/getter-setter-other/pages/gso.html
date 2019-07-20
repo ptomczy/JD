@@ -1,0 +1,41 @@
+<mat-tab-group dynamicHeight="true">
+    <mat-tab label="Content">
+        <br>
+        <button mat-raised-button (click)="openModal()">Wypełnij danymi (modal)</button>
+        <button mat-raised-button (click)="reset()">Resetuj</button>
+        <br>
+        <br>
+        <mat-chip-list *ngIf="exampleItem.leftLeg && exampleItem.rightLeg">
+            <mat-chip color="primary" selected>{{exampleItem.leftLeg}}</mat-chip>
+            <mat-chip color="primary" selected>{{exampleItem.rightLeg}}</mat-chip>
+        </mat-chip-list>
+    </mat-tab>
+
+    <mat-tab label="Comment">
+        <br>
+        <mat-card>
+            <mat-card-subtitle>Do konsultacji<i class ="material-icons">done_outline</i></mat-card-subtitle>
+
+            <mat-card-content>
+                <p>Jak zarządzać za pomocą parametru czasu w setTimeout, żeby ten progressbar z modala wolniej leciał?</p>
+            </mat-card-content>
+        </mat-card>
+        <br>
+        <mat-card>
+            <mat-card-subtitle>Do konsultacji<i class ="material-icons">done_outline</i></mat-card-subtitle>
+            <mat-card-content>
+                <p>Jak automatycznie zamknąć modal po uzyskaniu żądanej wartości parametru?</p>
+            </mat-card-content>
+        </mat-card>
+        <br>
+        <mat-card>
+            <mat-card-subtitle>Do konsultacji<i class ="material-icons">done_outline</i></mat-card-subtitle>
+            <mat-card-content>
+                <p>Jak przesłać sygnał z tego co się zadziało na modalu do innego komponentu nie używając templejta tego modala?</p>
+            </mat-card-content>
+        </mat-card>
+        <br>
+    </mat-tab>
+
+</mat-tab-group>
+

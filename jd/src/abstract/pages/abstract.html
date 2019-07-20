@@ -1,0 +1,31 @@
+<mat-tab-group>
+  <mat-tab label="Content">
+    <br>
+    <button mat-stroked-button matBadge="c" (click)="makeNew()">
+      Tworzenie nowego obiektu i zwrot przez metodę
+    </button>
+    <br>
+    <br>
+    <button mat-stroked-button matBadge="c" (click)="displayTxt()">
+      Pokaż tajny tekst protected
+    </button>
+  </mat-tab>
+  <mat-tab label="Comment">
+    <mat-card>
+      <mat-card-subtitle>Do konsultacji<i class ="material-icons">done_outline</i></mat-card-subtitle>
+      <mat-card-content>
+        <p>
+          Jak wyświetlić wartość zwracaną przez metodę nowego
+          obiektu używając promisa? Zwrot z obiektu ukryty, jeżeli ustawi się
+          metodę na zwrot typu number to działa jak zamierzone.
+        </p>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-subtitle>Do konsultacji</mat-card-subtitle>
+      <mat-card-content>
+        <p>Jak praktycznie zastosować zakres 'protected'?<i class ="material-icons">done_outline</i></p>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,47 @@
+<div class="modal-header">
+<h4 class="modal-title" id="modal-title">Filter by {{filterKind}}</h4>
+</div>
+<div class="modal-body">
+    <div *ngIf="filterKind == 'age'" style="display: grid; grid-template-columns: 1fr 10fr 1fr">
+        <div>
+            <p>{{scaleMin}}</p>
+        </div>
+        <div class="progress">
+            <div class="progress-bar bg-transparent" role="progressbar" [ngStyle]="{'width': lSvCorr+'%'}"  aria-valuemin="scaleMin" aria-valuemax="'scaleMax'"></div>
+            <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{'width': rSvCorr+'%'}"  aria-valuemin="scaleMin" aria-valuemax="scaleMax"></div>
+        </div>
+        <div>
+            <p>{{scaleMax}}</p>
+        </div>
+        <br>
+        <div style="display: grid; grid-template-columns: 1fr 10fr 1fr">
+            <div>
+                <p>{{scaleMax}}</p>
+                <mat-slider vertical thumbLabel [min]="scaleMin" [max]="scaleMax" [(ngModel)]="lSvalue" (valueChange)="valChange()"></mat-slider>
+                <p>{{scaleMin}}</p>
+            </div>
+            <div style="display: grid; grid-template-columns: 5fr 15fr 5fr">
+                <p> </p>
+                <div>
+                    <p *ngIf="min || max" style="font-size: 23px">From {{min}} to {{max}}</p>
+                </div>
+                <p> </p>
+            </div>
+            <div>
+                <p>{{scaleMax}}</p>
+                <mat-slider vertical thumbLabel [min]="scaleMin" [max]="scaleMax" [(ngModel)]="rSvalue" (valueChange)="valChange()"></mat-slider>
+                <p>{{scaleMin}}</p>
+            </div>
+        </div>
+    </div>
+    <mat-selection-list *ngIf="filterKind != 'age'" [(ngModel)]="selectedItems">
+        <mat-list-option *ngFor="let itm of listOfItems" [value]="itm" [selected]="getElementChecked(itm)">
+            {{itm}}
+        </mat-list-option>
+    </mat-selection-list>
+</div>
+<div class="modal-footer">
+<button class="btn btn-warning" (click)="clearFilter()">Clear filter</button>
+<button type="button" class="btn btn-outline-secondary" (click)="dismiss()">Cancel</button>
+<button type="button" ngbAutofocus class="btn btn-danger" (click)="close()">Ok</button>
+</div>

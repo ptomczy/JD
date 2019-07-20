@@ -1,0 +1,46 @@
+<button mat-raised-button [matMenuTriggerFor]="menu">{{buttonCaption}}</button>
+<mat-menu #menu="matMenu" yPosition="above">
+    <ng-container *ngFor="let name of milestoneNames" >
+        <section>
+            <button *ngIf="getNameSubs(name).length > 1"
+                mat-menu-item 
+                [matMenuTriggerFor]='subs'
+                [matMenuTriggerData]="{list: getNameSubs(name)}"
+                (click)="selectName(name)">{{name}}</button>
+        </section>
+        <button *ngIf="getNameSubs(name).length < 2"
+            mat-menu-item 
+            (click)="selectName(name)">{{name}}</button>
+    </ng-container>
+</mat-menu>
+
+<mat-menu #subs>
+    <ng-template matMenuContent let-list="list">
+        <ng-container *ngFor="let sub of list">
+            <button *ngIf="getSubsPresubs(sub).length > 1"
+                mat-menu-item
+                [matMenuTriggerFor]='preSubs'
+                [matMenuTriggerData]="{sublist: getSubsPresubs(sub)}"
+                (click)="selectSub(sub)">{{sub}}</button>
+            <button *ngIf="getSubsPresubs(sub).length < 2"
+                mat-menu-item
+                (click)="selectSub(sub)">{{sub}}</button>
+        </ng-container>
+    </ng-template>
+</mat-menu>
+
+<mat-menu #preSubs>
+    <ng-template matMenuContent let-sublist="sublist">
+        <ng-container *ngFor="let presub of sublist">
+            <button 
+                mat-menu-item
+                (click)="selectPreSub(presub)">
+                {{presub}}
+            </button>
+        </ng-container>
+    </ng-template>
+</mat-menu>
+<hr>
+
+
+  

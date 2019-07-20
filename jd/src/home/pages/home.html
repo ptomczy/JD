@@ -1,0 +1,35 @@
+<div matBadge="c" matBadgePosition="before" style="margin-left: 5px">
+    <p>Legenda: konsolę otwórz, tam wynik znajdziesz</p>
+</div>
+<button-menu-zwei 
+    (milestones)="setMilestones($event)" 
+    (choiceKey)="setChoiceKey($event)" 
+    (selectedItm)="setSelectedItm($event)"
+    [buttonCaption]="buttonCaptionUpdated">
+</button-menu-zwei>
+<div *ngIf="additionalMenuButtonsVisible">
+    <mat-list role="list" fxFlex="45%">
+        <button 
+            mouse-over-object-color-change
+            style="height: auto; background-color: whitesmoke"
+            (mouseenter)="onEnter($event.target)" 
+            *ngFor="let obj of milestones_parents"
+            mat-list-item
+            (click)="clickedNavButton(obj)"
+            >{{obj}}</button>
+    </mat-list>
+    <mat-list fxFlex="10%"></mat-list>
+    <mat-list role="list" fxFlex="45%" *ngIf="milestones_children && milestones_children.length > 0">
+        <button 
+            mouse-over-object-color-change
+            style="height: auto; background-color: whitesmoke"
+            *ngFor="let childObj of milestones_children"
+            (click)="clickedNavButton(childObj)"
+            (mouseenter)="onEnterChild(true)"
+            (mouseleave)="onEnterChild(false)"
+            >{{childObj}}</button>
+    </mat-list>
+</div>
+
+
+  

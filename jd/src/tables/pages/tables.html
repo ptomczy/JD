@@ -1,0 +1,97 @@
+<mat-tab-group>
+  <mat-tab label="Content">
+    <div class="containter">
+      <br>
+      <button
+        style="margin-bottom: 10px"
+        mat-raised-button
+        (click)="clearAllFilters()"
+      >
+        Clear all filters
+      </button>
+    </div>
+    <div class="container">
+      <button
+        style="width: 120px"
+        class="btn btn-primary"
+        [ngClass]="{ 'btn-danger': ageFiltered.length }"
+        (click)="openModal('age')"
+      >
+        {{ ageButtonCaption }}
+        <span *ngIf="ageFiltered.length"> ({{ ageFiltered.length }})</span>
+      </button>
+      <button
+        style="width: 120px"
+        class="btn btn-primary"
+        [ngClass]="{ 'btn-danger': districtFiltered.length }"
+        (click)="openModal('district')"
+      >
+        {{ districtButtonCaption }}
+        <span *ngIf="districtFiltered.length">
+          ({{ districtFiltered.length }})</span
+        >
+      </button>
+      <button
+        style="width: 120px"
+        class="btn btn-primary"
+        [ngClass]="{ 'btn-danger': carMakeFiltered.length }"
+        (click)="openModal('carMake')"
+      >
+        {{ carMakeButtonCaption }}
+        <span *ngIf="carMakeFiltered.length">
+          ({{ carMakeFiltered.length }})</span
+        >
+      </button>
+      <button
+        style="width: 120px"
+        class="btn btn-primary"
+        [ngClass]="{ 'btn-danger': fuelTypeFiltered.length }"
+        (click)="openModal('fuelType')"
+      >
+        {{ fuelTypeButtonCaption }}
+        <span *ngIf="fuelTypeFiltered.length">
+          ({{ fuelTypeFiltered.length }})</span
+        >
+      </button>
+    </div>
+    <br />
+    <div class="container">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">District</th>
+            <th scope="col">Car make</th>
+            <th scope="col">Fuel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let el of filteredPersonCarData">
+            <td>{{ el.name }}</td>
+            <td>{{ el.age }}</td>
+            <td>{{ el.district }}</td>
+            <td>{{ el.carMake }}</td>
+            <td>{{ el.fuelType }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-tab>
+  <mat-tab label="Comment">
+    <br>
+    <mat-card>
+        <mat-card-subtitle>Do konsultacji<i class ="material-icons">done_outline</i></mat-card-subtitle>
+        <mat-card-content>
+            <p>Jak obsłużyć dismiss na modalu, by w konsoli nie waliło błędem?</p>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <mat-card>
+        <mat-card-subtitle>Do konsultacji<i class ="material-icons">done_outline</i></mat-card-subtitle>
+        <mat-card-content>
+            <p>Jak wywalić obwódkę fokusa na elementach strony?</p>
+        </mat-card-content>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>

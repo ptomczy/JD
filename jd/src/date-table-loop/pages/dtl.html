@@ -1,0 +1,23 @@
+<p>Obecna data: {{currDate}}</p>
+<div class="containter">
+    <button mat-raised-button (click)="formattingDate()">Pokaż</button>
+</div>
+<br>
+<div class="container">
+    <table class="table table-striped" *ngIf="timeData.length">
+        <thead>
+        <tr>
+          <th scope="col">Parametr</th>
+          <th scope="col">Wartość</th>
+          <th scope="col">Komentarz</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let itm of timeData">
+          <td>{{ itm.parameter }}</td>
+          <td>{{ itm.value }}</td>
+          <td>{{ itm.comment }}</td>
+        </tr>
+        </tbody>
+      </table>
+</div>
