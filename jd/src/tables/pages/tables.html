@@ -14,11 +14,11 @@
       <button
         style="width: 120px"
         class="btn btn-primary"
-        [ngClass]="{ 'btn-danger': ageFiltered.length }"
+        [ngClass]="{ 'btn-danger': highlightedNumberFilterButton }"
         (click)="openModal('age')"
       >
         {{ ageButtonCaption }}
-        <span *ngIf="ageFiltered.length"> ({{ ageFiltered.length }})</span>
+        <!-- <span *ngIf="ageFiltered.length"> ({{ ageFiltered.length }})</span> -->
       </button>
       <button
         style="width: 120px"

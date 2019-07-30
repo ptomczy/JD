@@ -21,6 +21,8 @@ export class TablesPage implements OnInit{
     private carMakeFiltered: Array<string> = [];
     private districtFiltered: Array<string> = [];
     private fuelTypeFiltered: Array<string> = [];
+    private filteredAge: {min: number, max: number};
+    private highlightedNumberFilterButton: boolean = false;
 
     ageButtonCaption: string;
     districtButtonCaption: string;
@@ -37,6 +39,7 @@ export class TablesPage implements OnInit{
         this.fuelTypeButtonCaption = 'Fuel type';
         this.personCarData = this.tbs.personCarData;
         this.filteredPersonCarData = this.personCarData;
+        this.filteredAge = {min: null, max: null};
     }
 
     openModal(arg: string){
@@ -51,9 +54,15 @@ export class TablesPage implements OnInit{
 
         switch(arg){
             case 'age': {
-                modalRef.componentInstance.filteredItems = this.ageFiltered;
+                modalRef.componentInstance.filteredAge = this.filteredAge;
                 modalRef.result
-                    .then(res => this.ageFiltered = res)
+                    //.then(res => this.ageFiltered = res)
+                    .then(res => {
+                        this.filteredAge = res;
+                        this.personCarData.forEach(x => {
+                            (x.age >= res.min && x.age <= res.max) ? this.ageFiltered.push(x.age) : null;
+                        })
+                    })
                     .then(() => this.filteredPersonCarData = this.mainFilter())
                     .catch(() => null);
                 this.handleModalRefResults(modalRef, arg);
@@ -105,6 +114,10 @@ export class TablesPage implements OnInit{
             this.foundInFiltered(el, 'fuelType')
         )
         this.filteredPersonCarData = result;
+
+        this.highlightedNumberFilterButton = this.filteredAge != {min: null, max: null} || this.ageFiltered.length != this.personCarData.length;
+        console.log('Wynik na przycisku: ', this.highlightedNumberFilterButton);
+
         return result;
     }
 
@@ -155,6 +168,7 @@ export class TablesPage implements OnInit{
 
     clearAllFilters(){
         this.ageFiltered = [];
+        this.filteredAge = {min: null, max: null};
         this.districtFiltered = [];
         this.carMakeFiltered = [];
         this.fuelTypeFiltered = [];

@@ -9,6 +9,7 @@ export class ModalMultiselect implements OnInit{
     @Input() listOfItems: any[];
     @Input() filteredItems: any[];
     @Input() filterKind: string;
+    @Input() filteredAge: {min: number, max: number};
     selectedItems: Array<any> = [];
     private lSvalue: number;
     private rSvalue: number;
@@ -16,6 +17,7 @@ export class ModalMultiselect implements OnInit{
     lSvCorr: number;
     min: number;
     max: number;
+    ageResult: {min: number, max: number};
     scaleMin: number;
     scaleMax: number;
     scaleDiff: number;
@@ -31,9 +33,15 @@ export class ModalMultiselect implements OnInit{
                 this.scaleMin = this.listOfItems[0];
                 this.scaleMax = this.listOfItems[this.listOfItems.length -1];
                 this.scaleDiff = this.scaleMax - this.scaleMin;
-                this.lSvalue = this.scaleMin;
-                this.rSvalue = this.scaleMax;
+                if(this.filteredAge.min != null && this.filteredAge.max != null){
+                    this.lSvalue = this.filteredAge.min;
+                    this.rSvalue = this.filteredAge.max;
+                } else {
+                    this.lSvalue = this.scaleMin;
+                    this.rSvalue = this.scaleMax;
+                }
                 this.valChange();
+                break;
             }
             default:
                 return null;
@@ -45,7 +53,15 @@ export class ModalMultiselect implements OnInit{
     }
 
     close(){
-        this.activeModal.close(this.selectedItems);
+        switch(this.filterKind){
+            case 'age': {
+                this.activeModal.close(this.ageResult);
+                break;
+            }
+            default:
+                return this.activeModal.close(this.selectedItems);
+        }
+        
     }
 
     getElementChecked(el: any){
@@ -74,6 +90,7 @@ export class ModalMultiselect implements OnInit{
         this.max = diff + min;
         this.lSvCorr = (min - this.scaleMin) / this.scaleDiff * 100;
         this.rSvCorr = (diff / this.scaleDiff) * 100;
+        this.ageResult = {min: this.min, max: this.max};
     }
 
 
