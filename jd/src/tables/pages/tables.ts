@@ -61,6 +61,9 @@ export class TablesPage implements OnInit{
                         this.filteredAge = res;
                         this.personCarData.forEach(x => {
                             (x.age >= res.min && x.age <= res.max) ? this.ageFiltered.push(x.age) : null;
+                            if(this.ageFiltered.length == this.personCarData.length){
+                                this.ageFiltered = [];
+                            }
                         })
                     })
                     .then(() => this.filteredPersonCarData = this.mainFilter())
