@@ -56,14 +56,12 @@ export class TablesPage implements OnInit{
             case 'age': {
                 modalRef.componentInstance.filteredAge = this.filteredAge;
                 modalRef.result
-                    //.then(res => this.ageFiltered = res)
+
                     .then(res => {
                         this.filteredAge = res;
+                        this.ageFiltered = [];
                         this.personCarData.forEach(x => {
                             (x.age >= res.min && x.age <= res.max) ? this.ageFiltered.push(x.age) : null;
-                            if(this.ageFiltered.length == this.personCarData.length){
-                                this.ageFiltered = [];
-                            }
                         })
                     })
                     .then(() => this.filteredPersonCarData = this.mainFilter())
@@ -118,7 +116,7 @@ export class TablesPage implements OnInit{
         )
         this.filteredPersonCarData = result;
 
-        this.highlightedNumberFilterButton = this.filteredAge != {min: null, max: null} || this.ageFiltered.length != this.personCarData.length;
+        this.highlightedNumberFilterButton = this.ageFiltered.length != this.personCarData.length;
         console.log('Wynik na przycisku: ', this.highlightedNumberFilterButton);
 
         return result;
@@ -176,5 +174,6 @@ export class TablesPage implements OnInit{
         this.carMakeFiltered = [];
         this.fuelTypeFiltered = [];
         this.filteredPersonCarData = this.personCarData;
+        this.highlightedNumberFilterButton = false;
     }
 }
