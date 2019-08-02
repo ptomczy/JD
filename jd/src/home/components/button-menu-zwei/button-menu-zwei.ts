@@ -25,7 +25,7 @@ const MILESTONES: Array<Imilestone> = [
     {name: 'Typescript poziom średni', sub: 'Typy zmiennych', presub: null, adr: 'gso'},
     {name: 'Typescript poziom średni', sub: 'Operacje na datach (nie moment.js): tworzenia, wyciąganie konkretnych', presub: null, adr: 'dtl'},
     {name: 'Typescript poziom średni', sub: 'Operacja na tablicach (filtracja, wyszukiwanie elementów, mapowanie)', presub: null, adr: 'tables'},
-    {name: 'Typescript poziom średni', sub: 'Zastosowanie odpowiedniej pętli (for, for dla obiektu, forEach, while, do', presub: null, adr: 'dtl'},
+    {name: 'Typescript poziom średni', sub: 'Zastosowanie odpowiedniej pętli (for, for dla obiektu, forEach, while, do', presub: null, adr: 'loops'},
     {name: 'Typescript poziom średni', sub: 'Zastosowanie warunków if z == i ===, switch', presub: null, adr: 'abstract'},
     {name: 'Typescript poziom średni', sub: 'Tworzenie obiektów immutable, kiedy ich używać', presub: null, adr: 'abstract'},
     {name: 'Typescript poziom średni', sub: 'Zrozumienie asynchroniczności', presub: 'Tworzenie promisów przez resolve, reject', adr: 'abstract'},

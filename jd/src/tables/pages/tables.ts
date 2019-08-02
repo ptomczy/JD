@@ -20,7 +20,7 @@ export class TablesPage implements OnInit{
     private ageFiltered: Array<number> = [];
     private carMakeFiltered: Array<string> = [];
     private districtFiltered: Array<string> = [];
-    private fuelTypeFiltered: Array<string> = [];   c                
+    private fuelTypeFiltered: Array<string> = [];             
     private filteredAge: {min: number, max: number};
     private highlightedNumberFilterButton: boolean = false;
 

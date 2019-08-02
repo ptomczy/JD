@@ -9,12 +9,14 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { BarOverDirective } from './components/modal-multiselect/modal-multiselect.directive';
+import { GeneralTableService } from './sevices/general-table.service';
+import { TablesService } from 'src/tables/services/tables.service';
 
 @NgModule({
     declarations: [LoadingProgress, MOOCCDirective, ModalMultiselect, BarOverDirective],
     imports: [CommonModule, MaterialModule, FlexLayoutModule, FormsModule],
     exports: [LoadingProgress, MOOCCDirective, ModalMultiselect],
-    providers: [LoadingProgressService, NgbActiveModal, NgbModal, ModalMultiselect],
+    providers: [LoadingProgressService, NgbActiveModal, NgbModal, ModalMultiselect, GeneralTableService, TablesService],
     entryComponents: [LoadingProgress]
 })
 

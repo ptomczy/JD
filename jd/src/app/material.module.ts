@@ -10,6 +10,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatListModule} from '@angular/material/list';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatSelectModule} from '@angular/material/select'
 
 const matElements = [
     MatMenuModule,
@@ -22,7 +23,8 @@ const matElements = [
     MatTabsModule,
     MatBadgeModule,
     MatListModule,
-    MatSliderModule
+    MatSliderModule,
+    MatSelectModule
 ]
 
 @NgModule({

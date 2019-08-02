@@ -7,7 +7,8 @@ const routes: Routes = [
   {path: 'abstract', loadChildren: () => import('src/abstract/abstract.module').then(m => m.AbstractModule)},
   {path: 'gso', loadChildren: () => import('src/getter-setter-other/getter-setter-other.module').then(m => m.GSOModule)},
   {path: 'dtl', loadChildren: () => import('src/date-table-loop/date-table-loop.module').then(m => m.DTLModule)},
-  {path: 'tables', loadChildren: () => import('src/tables/tables.module').then(m => m.TablesModule)}
+  {path: 'tables', loadChildren: () => import('src/tables/tables.module').then(m => m.TablesModule)},
+  {path: 'loops', loadChildren: () => import('src/loop-pure/lp.module').then(m => m.LPModule)}
 ];
 
 @NgModule({

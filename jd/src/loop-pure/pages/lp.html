@@ -1,0 +1,12 @@
+<optns [singleColumnListToChoose]="items" (singleElementChosen)="setSelectedElement($event)"></optns>
+<br>
+<button mat-raised-button (click)="useForeach()">Go! Go! Go!</button>
+<br>
+<p *ngIf="selectedElement">Wybrany element to: {{selectedElement.name}}</p>
+<br>
+<div loopWhileActivator (triggerValue)="setTrigVal($event)" style="width:100px;height:100px;border:1px solid red; background-color: red"></div>
+<br>
+<p>TriggerValueL {{trigVal}}</p>
+<!-- <mat-list>
+    <mat-list-item *ngFor="let item of items">{{item.name}}</mat-list-item>
+</mat-list> -->
