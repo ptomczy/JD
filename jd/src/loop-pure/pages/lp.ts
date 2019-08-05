@@ -1,5 +1,6 @@
 import { Component, OnInit, HostBinding, HostListener } from "@angular/core";
 import { GeneralTableService } from 'src/shared/sevices/general-table.service';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
     selector: 'lp',
@@ -10,6 +11,8 @@ export class LPPage implements OnInit {
     private items: Array<any>;
     private selectedElement: any;
     private trigVal: any;
+    private ctrToDisplay: number | string = 'Jeszcze nie ruszył';
+    private myInterval: any;
 
     constructor(private dataService: GeneralTableService){
 
@@ -55,14 +58,35 @@ export class LPPage implements OnInit {
         
     }
 
-    useWhile(){
-        console.log("uruchomiony useWhile");
+    useWhile1(){ //Observable
+
+        let counter: number = 1;
+        
+            this.myInterval = setInterval(() => {
+                console.log("Wynik: ", counter);
+                this.ctrToDisplay = counter;
+                counter++;
+            }, 500) 
+    }
+
+    useWhile2(){//Promise
+        let counter: number = 0;
+        setInterval(() => {
+            let prom = Promise.resolve(() => {
+                counter++;
+                console.log('Oto ', counter);
+            })
+            prom.then();
+        }, 500)
     }
 
     setTrigVal(val: any){
         this.trigVal = val;
         if(this.trigVal) {
-            this.useWhile();
+            this.useWhile1();
+        } else {
+            clearInterval(this.myInterval);
+            this.ctrToDisplay = 'wyzerowany';
         }
     }
 
