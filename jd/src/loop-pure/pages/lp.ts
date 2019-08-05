@@ -63,7 +63,6 @@ export class LPPage implements OnInit {
         let counter: number = 1;
         
             this.myInterval = setInterval(() => {
-                console.log("Wynik: ", counter);
                 this.ctrToDisplay = counter;
                 counter++;
             }, 500) 
