@@ -5,5 +5,5 @@ import { Component } from "@angular/core";
     templateUrl: 'immut.html'
 })
 export class ImmutPage{
-    
+    constructor(){}
 }
