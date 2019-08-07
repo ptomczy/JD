@@ -8,9 +8,8 @@ const LOOP_ITEMS = [
     {name: 'ForEach', method: 'useForEach()'},
     {name: 'SetInterval zamiast while', method: ''},
     {name: 'Do', method: 'useSimpleFor()'},
-    {name: 'Map', method: 'useSimpleFor()'},
-    {name: 'Simple For', method: 'useDo()'},
-    {name: 'Simple For', method: 'useMap()'}
+    {name: 'Map', method: 'useSimpleFor()'}
+
 ]
 
 @Component({
@@ -43,7 +42,7 @@ export class LPPage implements OnInit {
 
     setSelectedElement(event: any){
         this.selectedElement = event;
-        console.log("Incoming element: ", this.selectedElement);
+        //console.log("Incoming element: ", this.selectedElement);
     }
 
     useSimpleFor(){

@@ -1,26 +1,45 @@
-<optns [singleColumnListToChoose]="items" (singleElementChosen)="setSelectedElement($event)"></optns>
-<br>
-<button mat-raised-button (click)="useMap()">Go! Go! Go!</button>
-<br>
-<p *ngIf="selectedElement">Wybrany element to: {{selectedElement.name}}</p>
-<br>
 <div style="display: flex">
-    <p style="width: 300px">Used: {{observableMethodForm.value ? 'Observable (faster)' : 'Promise'}}</p>
+    <optns [singleColumnListToChoose]="items" (singleElementChosen)="setSelectedElement($event)"></optns>
     <br>
-    <mat-slide-toggle [formControl]="observableMethodForm" >Use observable</mat-slide-toggle>    
-</div>
-<br>
-<div style="display: flex">
-    <div loopWhileActivator (triggerValue)="setTrigVal($event)" style="width:100px;height:100px;border:1px solid red; background-color: red">Pokryj mnie</div>
-    <br>
-    <div style="width: 300px">
-        <p>TriggerValueL <span style="font-weight: bold">{{trigVal}}</span></p>
-        <p>Counter to display: <span style="font-weight: bold">{{ctrToDisplay}}</span></p>
-    </div>
-    <br>
-    <div style="width:100px;height:100px;border:1px solid white" [ngStyle]="{'background-color': ctrToDisplay < 8 ? 'green' : 'blue'}"></div>
+    <p *ngIf="selectedElement" style="padding: 20px">Wybrany element to: {{selectedElement.name}}</p>
+    
 </div>
 
-<!-- <mat-list>
-    <mat-list-item *ngFor="let item of items">{{item.name}}</mat-list-item>
-</mat-list> -->
+<div *ngIf="selectedElement && selectedElement.name == 'Simple For'">
+    <button mat-raised-button matBadge="c" matBadgePosition="after" (click)="useSimpleFor()">Go! Go! Go!</button>
+</div>
+
+<div *ngIf="selectedElement && selectedElement.name == 'For object'">
+    <button mat-raised-button mat-raised-button matBadge="c" matBadgePosition="after" (click)="useForObject()">Go! Go! Go!</button>
+</div>
+
+<div *ngIf="selectedElement && selectedElement.name == 'ForEach'">
+    <button mat-raised-button mat-raised-button matBadge="c" matBadgePosition="after" (click)="useForeach()">Go! Go! Go!</button>
+</div>
+
+<div *ngIf="selectedElement && selectedElement.name == 'SetInterval zamiast while'">
+    <div style="display: flex">
+        <p style="width: 300px">Used: {{observableMethodForm.value ? 'Observable (faster)' : 'Promise'}}</p>
+        <br>
+        <mat-slide-toggle [formControl]="observableMethodForm" >Use observable</mat-slide-toggle>    
+    </div>
+    <br>
+    <div style="display: flex">
+        <div loopWhileActivator (triggerValue)="setTrigVal($event)" style="width:100px;height:100px;border:1px solid red; background-color: red">Pokryj mnie</div>
+        <br>
+        <div style="width: 300px">
+            <p>TriggerValueL <span style="font-weight: bold">{{trigVal}}</span></p>
+            <p>Counter to display: <span style="font-weight: bold">{{ctrToDisplay}}</span></p>
+        </div>
+        <br>
+        <div style="width:100px;height:100px;border:1px solid white" [ngStyle]="{'background-color': ctrToDisplay < 8 ? 'green' : 'blue'}"></div>
+    </div>
+</div>
+
+<div *ngIf="selectedElement && selectedElement.name == 'Do'">
+    <button mat-raised-button mat-raised-button matBadge="c" matBadgePosition="after" (click)="useDo()">Go! Go! Go!</button>
+</div>
+
+<div *ngIf="selectedElement && selectedElement.name == 'Map'">
+    <button mat-raised-button mat-raised-button matBadge="c" matBadgePosition="after" (click)="useMap()">Go! Go! Go!</button>
+</div>
