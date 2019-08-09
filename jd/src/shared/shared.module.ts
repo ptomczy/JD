@@ -11,9 +11,10 @@ import { FormsModule } from '@angular/forms';
 import { BarOverDirective } from './components/modal-multiselect/modal-multiselect.directive';
 import { GeneralTableService } from './sevices/general-table.service';
 import { TablesService } from 'src/tables/services/tables.service';
+import { ModalSingleChoice } from './components/modal-single-choice/modal-single-choice';
 
 @NgModule({
-    declarations: [LoadingProgress, MOOCCDirective, ModalMultiselect, BarOverDirective],
+    declarations: [LoadingProgress, MOOCCDirective, ModalMultiselect, BarOverDirective, ModalSingleChoice],
     imports: [CommonModule, MaterialModule, FlexLayoutModule, FormsModule],
     exports: [LoadingProgress, MOOCCDirective, ModalMultiselect],
     providers: [LoadingProgressService, NgbActiveModal, NgbModal, ModalMultiselect, GeneralTableService, TablesService],

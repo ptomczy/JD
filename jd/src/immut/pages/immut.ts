@@ -7,6 +7,6 @@ import { Component, ChangeDetectionStrategy } from "@angular/core";
 })
 export class ImmutPage{
     constructor(){
-        console.log('CDS ', ChangeDetectionStrategy);
+        console.log('CDS info: ', ChangeDetectionStrategy);
     }
 }

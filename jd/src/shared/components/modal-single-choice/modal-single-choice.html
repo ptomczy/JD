@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Make your selection</h1>
+<div mat-dialog-content>
+    <mat-list>
+        <mat-list-item *ngFor="let el of listOfItems" (click)="onSelect(el)">{{el.name}}</mat-list-item>
+    </mat-list>
+</div>
+<div>
+  <button mat-raised-button (click)="onNoClick()">Cancel</button>
+</div>
