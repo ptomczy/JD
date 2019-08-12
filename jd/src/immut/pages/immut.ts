@@ -1,8 +1,11 @@
 import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { Record } from 'immutable';
+
 
 interface IObiektNumber {
     readonly[n: number]: number;
 }
+const myRecord = Record({a:1, b:2})
 @Component({
     selector: 'immut',
     templateUrl: 'immut.html',
@@ -14,9 +17,11 @@ export class ImmutPage{
         readonly bar: number,
         readonly name: string
     } = { bar: 123, name: 'MyName' };
+    private gitObiekt: {a: number, b: number};
 
     constructor(){
         console.log('CDS info: ', ChangeDetectionStrategy);
+        this.gitObiekt = {a: 10, b: 20};
     }
 
     iMutateFoo(obj: { bar: number, name: string }) {
@@ -34,7 +39,9 @@ export class ImmutPage{
         //tu będę próbował zmienić właściwość otherObiektu
         otherObiekt[0] = 12; //kompilator zwraca błąd
         console.log("Takie dostaję po próbie przypisania właściwości dla pierwszego elementu otherObiektu: ", otherObiekt[0]);
+    }
 
+    immutableClick(){
         
     }
 
