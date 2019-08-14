@@ -1,5 +1,29 @@
 <!--numbers, booleans, strings, null and undefined are primitive types. 
 All primitive types are passed by value. 
 Objects, arrays, and functions are also passed by value, but the value is a copy of a reference. -->
-<tst></tst>
-<button mat-raised-button (click)="readonlyClick()">Readonly issue</button>
+<mat-tab-group>
+    <mat-tab label="Content">
+        <tst></tst>
+        <button mat-raised-button (click)="readonlyClick()" matBadge="c" matBadgePosition="after" style="margin-right: 15px">Readonly issue</button>
+        <button mat-raised-button (click)="immutableClick()" matBadge="c" matBadgePosition="after">Immutable.js issue</button>
+        <br>
+        <br>
+    </mat-tab>
+
+    <mat-tab label="Comment">
+        <br>
+        <mat-card>
+            <mat-card-subtitle>Do konsultacji</mat-card-subtitle> <!-- <i class ="material-icons">done_outline</i> -->
+
+            <mat-card-content>
+                <p>O co chodzi z wykorzystaniem takiego zapisu?</p>
+                <pre>
+                    <code [innerHTML]="code"></code>
+                </pre>
+                
+            </mat-card-content>
+        </mat-card>
+        <br>
+    </mat-tab>
+</mat-tab-group>
+

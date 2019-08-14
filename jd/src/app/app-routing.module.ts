@@ -10,7 +10,8 @@ const routes: Routes = [
   {path: 'tables', loadChildren: () => import('src/tables/tables.module').then(m => m.TablesModule)},
   {path: 'loops', loadChildren: () => import('src/loop-pure/lp.module').then(m => m.LPModule)},
   {path: 'tis', loadChildren: () => import('src/triple-i-switch/tis.module').then(m => m.TisModule)},
-  {path: 'immut', loadChildren: () => import('src/immut/immut.module').then(m => m.ImmutModule)}
+  {path: 'immut', loadChildren: () => import('src/immut/immut.module').then(m => m.ImmutModule)},
+  {path: 'asynchro', loadChildren: () => import('src/asynchro/asynchro.module').then(m => m.AsynchroModule)}
 ];
 
 @NgModule({

@@ -28,7 +28,7 @@ const MILESTONES: Array<Imilestone> = [
     {name: 'Typescript poziom średni', sub: 'Zastosowanie odpowiedniej pętli (for, for dla obiektu, forEach, while, do', presub: null, adr: 'loops'},
     {name: 'Typescript poziom średni', sub: 'Zastosowanie warunków if z == i ===, switch', presub: null, adr: 'tis'},
     {name: 'Typescript poziom średni', sub: 'Tworzenie obiektów immutable, kiedy ich używać (dodałem changeDetector)', presub: null, adr: 'immut'},
-    {name: 'Typescript poziom średni', sub: 'Zrozumienie asynchroniczności', presub: 'Tworzenie promisów przez resolve, reject', adr: 'abstract'},
+    {name: 'Typescript poziom średni', sub: 'Zrozumienie asynchroniczności', presub: 'Tworzenie promisów przez resolve, reject', adr: 'asynchro'},
     {name: 'Typescript poziom średni', sub: 'Zrozumienie asynchroniczności', presub: 'Użycie przy pomocy then, catch, finally', adr: 'abstract'},
     {name: 'Typescript poziom średni', sub: 'Zrozumienie asynchroniczności', presub: 'Użycie async i await', adr: 'abstract'},
     {name: 'Typescript poziom średni', sub: 'Rxjs', presub: 'Tworzenie obiektów przez of, create, z promisa', adr: 'abstract'},

@@ -1,17 +1,33 @@
 import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { Record } from 'immutable';
+import { Record, isImmutable, fromJS } from 'immutable';
 
 
 interface IObiektNumber {
     readonly[n: number]: number;
 }
-const myRecord = Record({a:1, b:2})
+ interface IDataObject {
+     name: string,
+     adj: number
+ }
+
+const myRecord = Record({a:1, b:2});
+const upgMyRecord = new myRecord({b: 3});
+
+const dObase = Record({
+    name: '',
+    adj: 100
+});
+
+//const { Map } = require('immutable');
+
 @Component({
     selector: 'immut',
     templateUrl: 'immut.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImmutPage{
+
+    private code: string = "const { Map } = require('immutable');";
 
     private obiekt: {
         readonly bar: number,
@@ -25,8 +41,9 @@ export class ImmutPage{
     }
 
     iMutateFoo(obj: { bar: number, name: string }) {
-        this.obiekt.bar = obj.bar;
-        this.obiekt.name = obj.name;
+        //Komentarz, żeby się skompilowało
+        //this.obiekt.bar = obj.bar;
+        //.obiekt.name = obj.name;
     }
     
     readonlyClick(){
@@ -37,12 +54,25 @@ export class ImmutPage{
         
         console.log("Takie idzie przy czytaniu: ", otherObiekt[1]);
         //tu będę próbował zmienić właściwość otherObiektu
-        otherObiekt[0] = 12; //kompilator zwraca błąd
+        //Komentarz, żeby się skompilowało
+        //otherObiekt[0] = 12; //kompilator zwraca błąd
         console.log("Takie dostaję po próbie przypisania właściwości dla pierwszego elementu otherObiektu: ", otherObiekt[0]);
     }
 
     immutableClick(){
+        console.log("Record z immutable: .get:", upgMyRecord.get('b'));
+        upgMyRecord.set('b', 15);
+        console.log("Po skorzystaniu z .set; record z immutable: .get:", upgMyRecord.get('b'), ", co nie powoduje zmiany obiektu");
+        let tmpValue = upgMyRecord.set('b', 15);
+        console.log("Po zwrocie nowej wersji seta na obiekcie: ", tmpValue.get('b'));
+        console.log("Po zrzucie do JSONa upgMyRecord: ", upgMyRecord.toJSON());
+        console.log("Sprawdzenie czy ma a: ", upgMyRecord.has('a'));
+        console.log("Sprawdzenie czy argument jest immutable: ", isImmutable(upgMyRecord));
+        let x = fromJS(this.gitObiekt);
         
+
+        
+
     }
 
     
