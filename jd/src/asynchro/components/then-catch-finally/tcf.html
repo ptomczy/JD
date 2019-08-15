@@ -1,0 +1,8 @@
+<p>Poczekaj 5s</p>
+<br>
+<button [disabled]="!buttonActive" mat-raised-button (click)="buttonClick()" style="margin-right: 20px">Control button</button>
+<br>
+<br>
+<p>{{commentValue}}</p>
+<br>
+<button mat-raised-button (click)="pleaseAgain()" *ngIf="againButtonActive">Daj jeszcze raz, pliz</button>

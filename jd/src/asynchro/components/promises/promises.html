@@ -1,2 +1,10 @@
-<p>Info about signalGiven: {{signalGiven}}</p>
-<button mat-raised-button (click)="buttonClicked()">Make use of promise</button>
+<div style="display: flex">
+    <p style="margin-right: 30px">Info about signalGiven: {{signalGiven}}</p>
+    <div style="padding: 10px; border-width: 1px; border-style: solid; border-color: red">
+        <p style="font-size: 200%; font-family: courier; color: red">{{timerValue}}</p>
+    </div>
+</div>
+
+<button mat-raised-button (click)="buttonClicked()" [disabled]="!isTriggerButtonActive" style="margin-right: 20px">Make use of promise</button>
+<button mat-raised-button (click)="pleaseAgain()" *ngIf="!isTriggerButtonActive">Daj jeszcze raz, pliz</button>
+<br>
