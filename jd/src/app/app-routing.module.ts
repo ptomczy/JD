@@ -11,7 +11,8 @@ const routes: Routes = [
   {path: 'loops', loadChildren: () => import('src/loop-pure/lp.module').then(m => m.LPModule)},
   {path: 'tis', loadChildren: () => import('src/triple-i-switch/tis.module').then(m => m.TisModule)},
   {path: 'immut', loadChildren: () => import('src/immut/immut.module').then(m => m.ImmutModule)},
-  {path: 'asynchro', loadChildren: () => import('src/asynchro/asynchro.module').then(m => m.AsynchroModule)}
+  {path: 'asynchro', loadChildren: () => import('src/asynchro/asynchro.module').then(m => m.AsynchroModule)},
+  {path: 'rxjs', loadChildren: () => import('src/rxjs/rxjs.module').then(m => m.RxjsModule)}
 ];
 
 @NgModule({
