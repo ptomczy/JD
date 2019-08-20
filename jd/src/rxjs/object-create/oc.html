@@ -1,0 +1,14 @@
+<h6>Tworzenie observabli: </h6>
+<br>
+<div style="display: flex">
+    <button style="margin-right: 5px" mat-raised-button (click)="createObservableByCreate()"
+        matTooltip="Może się zdarzyć, że wygenerowany zostanie sztuczny błąd widoczny w konsoli. To jest losowe i zaplanowane.">By create</button>
+    <br>
+    <button style="margin-right: 5px" mat-raised-button (click)="createObservableFromPromise()"
+        matTooltip="Poczekaj, akcja będzie po upłyiwie 1 sekundy od kliknięcia.">From promise</button>
+    <br>
+    <button mat-raised-button (click)="createObservableByOf()">By of</button>
+    <br>
+</div>
+<br>
+<h6>Info: {{info}}</h6>

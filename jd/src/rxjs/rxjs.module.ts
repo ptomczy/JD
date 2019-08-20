@@ -5,10 +5,11 @@ import { RxjsSubscriptionComponent } from './subscription-use/su';
 import { RxjsComponent } from './rxjs.component';
 import { RxjsRoutingModule } from './rxjs-routing.module';
 import { MaterialModule } from 'src/app/material.module';
+import { SharedModule } from 'src/shared/shared.module';
 
 @NgModule({
     declarations: [RxjsComponent, RxjsObjectCreateComponent, RxjsOperatorsComponent, RxjsSubscriptionComponent],
-    imports: [RxjsRoutingModule, MaterialModule],
+    imports: [RxjsRoutingModule, MaterialModule, SharedModule],
     exports: [RxjsComponent, RxjsObjectCreateComponent, RxjsOperatorsComponent, RxjsSubscriptionComponent]
 })
 export class RxjsModule {
