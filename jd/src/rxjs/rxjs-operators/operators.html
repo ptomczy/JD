@@ -34,7 +34,16 @@
         <mat-list-item *ngFor="let itm of infoFlatMap">{{itm}}</mat-list-item>
     </mat-list>
 </div>
-
+<hr>
+<h6>Tap</h6>
+<div style="display: flex">
+    <button 
+        style="margin-right: 15px" 
+        mat-raised-button 
+        (click)="exampleForTap()"
+        >Launcher</button>
+        <textarea rows="6" cols="25">{{tapTextToDisplay}}</textarea>
+</div>
 
 <hr>
 
