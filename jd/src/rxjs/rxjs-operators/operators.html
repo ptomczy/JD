@@ -23,4 +23,18 @@
     <p>Dwa timery o różnych czasach. Jeden wpływa na drugi</p>
 </div>
 <hr>
+<h6>FlatMap</h6>
+<div style="display: flex">
+    <button 
+        style="margin-right: 15px" 
+        mat-raised-button 
+        (click)="exampleForFlatMap()"
+        >Launcher</button>
+    <mat-list dense>
+        <mat-list-item *ngFor="let itm of infoFlatMap">{{itm}}</mat-list-item>
+    </mat-list>
+</div>
+
+
+<hr>
 
