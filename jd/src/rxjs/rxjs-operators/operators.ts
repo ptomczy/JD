@@ -46,7 +46,6 @@ export class RxjsOperatorsComponent implements OnInit, OnDestroy{
             } else {
                 this.infoMap = 'Wynik zmodyfikowany mapem: ' + el;
             }
-            
         }));
 
         obs.subscribe();
@@ -64,80 +63,53 @@ export class RxjsOperatorsComponent implements OnInit, OnDestroy{
 
     exampleForTap(){
 
-        // let source = of(tapBase).pipe(delay(3000));
-
-        // let personObservable = Observable.create(async observer => {
-        //     for (let index = 0; index < tapBase.length; index++) {
-        //         observer.next(tapBase[index]);
-        //         await new Promise(res => {
-        //             setTimeout(() => {
-        //                 res();
-        //             }, 3000);
-        //         });
-        //     }
-        // }) as Observable<string>;
-
         let source = from(tapBase);
 
-        // source.pipe(
-        //     //delay(1000),
-        //     // concatMap(el => of(el).pipe(
-        //     //     delay(1000),
-        //     //     tap(e => console.log('Pierwszy: ', e))
-        //     //     )),
-
-        //     tap(prsn => {
-        //         this.handlePersonForTap(prsn)
-        //     }),
-        //     //delay(1000),
-        //     // concatMap(el => of(el).pipe(
-        //     //     delay(1000),
-        //     //     tap(e => console.log('Drugi: ', e))
-        //     //     )),
-
-        //     map(async p => {
-        //         this.setupTextToDisplay('Pełna nazwa to: ' + p);
-        //     }),
-        //     //delay(1000),
-        //     // concatMap(el => of(el).pipe(
-        //     //     delay(1000),
-        //     //     tap(e => console.log('Trzeci: ', e))
-        //     //     )),
-        //     tap(() => this.setupTextToDisplay('Koniec dla elementu'))   
-        // ).subscribe();
+        let tmpCounter: number = 300;
 
         source.pipe(
-            //delay(1000),
-            tap(async el => await this.handlePersonForTap(el)),
-            // delay(1000),
-            // tap(m => this.handlePersonForTap(m)),
-            // delay(1000),
-            //tap(() => console.log('Koniec'))
+            concatMap(x => of(x).pipe(
+                tap(() => {
+                    tmpCounter = this.increaseCounter(tmpCounter,  100);
+                    console.log(tmpCounter);
+                }),
+                delay(tmpCounter))),
+            tap(el => this.handlePersonForTap(el)),
+            concatMap(x => of(x).pipe(
+                tap(() => {
+                    tmpCounter = this.increaseCounter(tmpCounter, 50);
+                    console.log(tmpCounter);
+                }),
+                delay(tmpCounter))),
+            tap(prsn => this.setupTextToDisplay('Pełna nazwa to: ' + prsn)),
+            concatMap(x => of(x).pipe(
+                tap(() => {
+                    tmpCounter = this.increaseCounter(tmpCounter, 300);
+                    console.log(tmpCounter);
+                }),
+                delay(tmpCounter))),
+            tap(() => this.setupTextToDisplay('Koniec elementu')),
         ).subscribe();
+    }
+
+    increaseCounter(counterValue: number, howMuch: number): number {
+       return counterValue = counterValue + howMuch;
     }
 
     handlePersonForTap(psn: string) {
         let m: Observable<any>;
         m = Observable.create(observer => {
-            setTimeout(() => {
                 observer.next(psn);
-            }, 400);
-            
         })
-        //return this.setupTextToDisplay('Trzy pierwsze litery to: ' + psn.slice(0, 3));
         m.subscribe(x => {return this.setupTextToDisplay('Trzy pierwsze litery to: ' + x.slice(0, 3))});
     }
 
     setupTextToDisplay(input: string) {
-        // setTimeout(() => {
             if(this.tapTextToDisplay == null){
                 this.tapTextToDisplay = input + '\n';
             } else {
                 this.tapTextToDisplay = input + '\n' +  this.tapTextToDisplay;
             }
-        // }, 400)
-
-
     }
 
     ngOnDestroy(){
