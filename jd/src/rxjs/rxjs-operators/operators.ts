@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { timer, combineLatest, from, interval, of, Observable } from 'rxjs';
-import { map, switchMap, flatMap, tap, delay, timeInterval, concatMap } from 'rxjs/operators';
+import { timer, combineLatest, from, interval, of, Observable, throwError } from 'rxjs';
+import { map, switchMap, flatMap, tap, delay, timeInterval, concatMap, catchError } from 'rxjs/operators';
 
 const t1$ = timer(1, 500);
 const t2$ = timer(1, 700);
@@ -110,6 +110,28 @@ export class RxjsOperatorsComponent implements OnInit, OnDestroy{
             } else {
                 this.tapTextToDisplay = input + '\n' +  this.tapTextToDisplay;
             }
+    }
+
+    exampleforCatchError(){
+        let observableForError = from(tapBase);
+
+        observableForError.pipe(
+            map(x => {
+                if(x.slice(0, 1) === "R"){
+                    throw new Error('Natrafiono na element zaczynający się od R. To ' + x);
+                }
+                return x;
+            }),
+            catchError(e => {
+                console.error(e.message);
+                console.log('Obsługiwany błąd');
+                return throwError('Error z catchError');
+            })
+        ).subscribe(val => {
+            console.log('W subscribe: ', val),
+            e => console.error(e);
+            () => console.log("Koniec");
+        })
     }
 
     ngOnDestroy(){
