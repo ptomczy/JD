@@ -6,7 +6,7 @@ export interface IPowerType {
 
 export interface IextraPowerType extends IPowerType {
     isCool: boolean,
-    getFucked(): boolean
+    setNotCool(carModel?: string): void
 }
 
 export enum EnergySources {

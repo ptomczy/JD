@@ -18,7 +18,7 @@ export enum ChoiceKeys {
 const MILESTONES: Array<Imilestone> = [
     {name: 'Typescript poziom średni', sub: 'Import zależności z innych plików, wraz z index', presub: null, adr: 'abstract'},
     {name: 'Typescript poziom średni', sub: 'Zastosowanie klas, klas abstrakcyjnych i interfejsów', presub: null, adr: 'abstract'},
-    {name: 'Typescript poziom średni', sub: 'Dziedziczenie i implementacja', presub: null, adr: 'abstract'},
+    {name: 'Typescript poziom średni', sub: 'Dziedziczenie i implementacja', presub: null, adr: 'di'},
     {name: 'Typescript poziom średni', sub: 'Modyfikatory public, private i protected', presub: null, adr: 'abstract'},
     {name: 'Typescript poziom średni', sub: 'Właściwości (get, set)', presub: null, adr: 'gso'},
     {name: 'Typescript poziom średni', sub: 'Zakresy zmiennych let, const, var', presub: null, adr: 'abstract'},

@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
-import { Abs } from './pages/abstract';
+import { Abs, ExtraClass } from './pages/abstract';
 import { MaterialModule } from 'src/app/material.module';
 import { AbstractRoutingModule } from './abstract-routing.module';
 
 @NgModule({
-    declarations: [Abs],
+    declarations: [Abs, ExtraClass],
     imports: [MaterialModule, AbstractRoutingModule],
-    exports: [Abs]
+    exports: [Abs, ExtraClass]
 })
 
 export class AbstractModule {

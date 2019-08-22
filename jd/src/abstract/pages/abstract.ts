@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { IPowerType, EnergySources } from '../models/abstract-model';
+import { IPowerType, EnergySources, IextraPowerType } from '../models/abstract-model';
 
 @Component({
     selector: 'abstract-page',
@@ -56,7 +56,12 @@ export abstract class MeanOfTransportation {
 export class OrdinaryCar extends MeanOfTransportation {
     private regNumber: string;
 
-    constructor(name: string, hasWheels: boolean, som: IPowerType, private regNr: string){
+    constructor(
+        name: string, 
+        hasWheels: boolean, 
+        som: IPowerType, 
+        private regNr: string       
+        ){
         super(name, hasWheels, som);
         this.regNumber = regNr;
 
@@ -70,6 +75,32 @@ export class OrdinaryCar extends MeanOfTransportation {
 
     giveText() {
         return super.gimmieText(this.chujowyTekst);
+    }
+
+    
+}
+
+@Component({selector: 'extra-class', template: '<button mat-stroked-button matBadge="c" (click)="setNotCool()">Implementacja interfejsu</button>'})
+export class ExtraClass implements IextraPowerType {
+    public isCool: boolean;
+    public combustion: boolean;
+    public energySource: EnergySources;
+
+    private readonly setOfModels: Array<string> = ['Opel Astra', 'Ford Focus', 'Renault Megane', 'Audi A4', 'Volkswagen Golf', 'Peugeot 308', 'Citroen C4'];
+
+    setNotCool(): void {
+        let modelDatabase: {model: string, isCool: boolean, combustion: boolean, energySource: EnergySources}[] = [];
+
+        this.setOfModels.forEach(model => {
+            modelDatabase.push({
+                model: model,
+                isCool: false,
+                combustion: true,
+                energySource: EnergySources.Petroleum
+            })
+        })
+
+        console.log("Car database: ", modelDatabase);
     }
 }
 
