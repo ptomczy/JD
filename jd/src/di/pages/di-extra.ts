@@ -1,5 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, Injectable, InjectionToken, Inject } from "@angular/core";
 import { IBuilding } from '../models/di-model';
+
+export const DOM_TOKEN = new InjectionToken("DOM_TOKEN");
 
 const objects: Array<IBuilding> = [
     {name: 'Blok mieszkalny', isMadeOfStone: true, hasCeiling: true},
@@ -30,9 +32,8 @@ export class DIExtraPage implements IBuilding {
     hasCeiling;
     private procedureOnGoing: boolean = false;
 
-    // constructor(theName){
-    //     this.name = theName;
-    // }
+    constructor(@Inject(DOM_TOKEN) private dm: Dom){
+    }
 
     getName(){
         console.log('Name to jest: ', this.name);
@@ -60,7 +61,7 @@ export class DIExtraPage implements IBuilding {
             counter++;
         },500);
 
-
+        this.dm.createObj();
         
     }
 
@@ -72,18 +73,23 @@ export class DIExtraPage implements IBuilding {
 }
 
 export class Budynek {
-    private kind: string;
+    protected kind: string;
 
     constructor(desc: string){
         this.kind = desc;
     }
-
-    getData(){
-        console.log(this.kind);
-    }
 }
 
-export class Dom extends Budynek {
+
+// export abstract class IDom {
+//     constructor(d:string) {
+
+//     }
+
+//     abstract createObj()
+// }
+
+export class Dom extends Budynek {//IDom {
     private color: string;
 
     constructor(d: string, c: string){
@@ -91,8 +97,13 @@ export class Dom extends Budynek {
         this.color = c;
     }
 
-    getD(){
-        console.log('d: ', ', c: ', this.color);
+    createObj(){
+        let x = new Budynek('Szałas');
+        let y = new Dom('Chata', 'niebieska');
+
+        console.log('Budynek: ', x.kind);
+        console.log('Dom: ', y.color);
+        
     }
 
 

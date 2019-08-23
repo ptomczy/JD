@@ -1,5 +1,5 @@
-import { Component } from "@angular/core";
-import { DIExtraPage } from './di-extra';
+import { Component, Inject } from "@angular/core";
+import { DIExtraPage, Dom, DOM_TOKEN } from './di-extra';
 import { IforHumanBuilding } from '../models/di-model';
 
 @Component({
@@ -8,16 +8,18 @@ import { IforHumanBuilding } from '../models/di-model';
 })
 export class DIPage extends DIExtraPage implements IforHumanBuilding {
 
-    hasToilet;
+    hasToilet: boolean;
     private infoValue: any = '';
 
-    // constructor(name: string){
-    //     super(name);
-    // }
+    constructor(@Inject(DOM_TOKEN) dm: Dom, @Inject('SraczToken') sracz: boolean){
+        super(dm);
+        this.hasToilet = sracz;
+    }
 
     createNewObject(): void {
-        //let newO = new DIExtraPage('Psia buda');
-        //this.infoValue = 'Utworzono: ', newO;
+        let nObj = new DIPage(null, true);
+        console.log("obj: ", nObj);
+        this.infoValue =  this.hasToilet;
     }
 
 }
