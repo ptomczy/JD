@@ -73,7 +73,7 @@ export class DIExtraPage implements IBuilding {
 }
 
 export class Budynek {
-    protected kind: string;
+    public kind: string;
 
     constructor(desc: string){
         this.kind = desc;
