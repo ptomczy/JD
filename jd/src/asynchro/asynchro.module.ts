@@ -6,11 +6,12 @@ import { MaterialModule } from 'src/app/material.module';
 import { CommonModule } from '@angular/common';
 import { TCFComponent } from './components/then-catch-finally/tcf';
 import { AsyncAwaitComponent } from './components/async-await/aa';
+import { ExtraOneNoteComponent } from './components/extra-one-note/eon';
 
 @NgModule({
-    declarations: [AsynchroPage, PromisesComponent, TCFComponent, AsyncAwaitComponent],
+    declarations: [AsynchroPage, PromisesComponent, TCFComponent, AsyncAwaitComponent, ExtraOneNoteComponent],
     imports: [AsynchroRoutingModule, MaterialModule, CommonModule],
-    exports: [AsynchroPage, PromisesComponent, TCFComponent, AsyncAwaitComponent]
+    exports: [AsynchroPage, PromisesComponent, TCFComponent, AsyncAwaitComponent, ExtraOneNoteComponent]
 })
 export class AsynchroModule {
 
