@@ -1,1 +1,15 @@
-<h6>Extra One Note Component</h6>
+<h6>Extra One Note Component - added as Emil wished</h6>
+<br>
+
+<div style="display: flex">
+    <mat-form-field style="margin-right: 10px">
+            <mat-label>Select option</mat-label>
+            <mat-select>
+                <mat-option value="callback" (click)="sel('callback')">Based on callback</mat-option>
+                <mat-option value="promise" (click)="sel('promise')">Based on promise</mat-option>
+                <mat-option value="asyncawait" (click)="sel('asyncawait')">Based on async/await</mat-option>
+            </mat-select>
+    </mat-form-field>
+    <button mat-raised-button (click)="runProcedure()" matBadge="c" matBadgePosition="after">Run procedure</button>
+</div>
+
