@@ -26,6 +26,7 @@ export class RxjsOperatorsComponent implements OnInit, OnDestroy{
     private infoSwitchMap: string | number;
     private infoFlatMap: Array<string>;
     private tapTextToDisplay: string;
+    private outerTimer: number;
 
 
     ngOnInit(){
@@ -52,13 +53,17 @@ export class RxjsOperatorsComponent implements OnInit, OnDestroy{
     }
 
     exampleForSwitchMap(){
-        t1$.pipe(switchMap(ev => t4$)).subscribe(res => this.infoSwitchMap = res);
+        t1$.pipe(
+            tap(val => this.outerTimer = val), //outer observable change implies the inner observable value change; outer observable remains unchanged
+            switchMap(ev => t4$))
+            .subscribe(res => this.infoSwitchMap = res);
     }
 
     exampleForFlatMap(){
         this.infoFlatMap = [];
         let carObservable = from(cars);
         carObservable.pipe(flatMap(model => model.models)).subscribe(x => this.infoFlatMap.push(x));//bo zwracana wartość jest observablem.
+        //carObservable remains unchanged; flatMap spłaszcza obydwa strumienie nie modyfikując ich.
     }
 
     exampleForTap(){
