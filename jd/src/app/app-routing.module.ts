@@ -14,7 +14,8 @@ const routes: Routes = [
   {path: 'tis', loadChildren: () => import('src/triple-i-switch/tis.module').then(m => m.TisModule)},
   {path: 'immut', loadChildren: () => import('src/immut/immut.module').then(m => m.ImmutModule)},
   {path: 'asynchro', loadChildren: () => import('src/asynchro/asynchro.module').then(m => m.AsynchroModule)},
-  {path: 'rxjs', loadChildren: () => import('src/rxjs/rxjs.module').then(m => m.RxjsModule)}
+  {path: 'rxjs', loadChildren: () => import('src/rxjs/rxjs.module').then(m => m.RxjsModule)},
+  {path: 'moment', loadChildren: () => import('src/momentJS/mom.module').then(m => m.MomModule)}
 ];
 
 @NgModule({

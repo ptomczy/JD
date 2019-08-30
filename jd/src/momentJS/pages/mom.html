@@ -1,0 +1,70 @@
+<h6>Date building</h6>
+<br>
+<form [formGroup]="dateForm" style="display: flex">
+    <div>
+        <h6>Select day value</h6>
+        <mat-form-field>
+            <mat-select formControlName="dayValue" required>
+                <mat-option *ngFor="let day of days" [disabled]="day.status == 'disabled'" [value]="day.number">
+                    {{day.number}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="selectedDayDeletedHint">
+                {{selectedDayDeletedHint}}
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <h6>Select month value</h6>
+        <mat-form-field>
+            <mat-select formControlName="monthValue" required>
+                <mat-option *ngFor="let month of months" [value]="month" (click)="change({el: 'month', val: month})">
+                {{month}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <h6>Select year value</h6>
+        <mat-form-field>
+            <mat-select formControlName="yearValue" required>
+                <mat-option *ngFor="let year of years" [value]="year" (click)="change({el: 'year', val: year})">
+                    {{year}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</form>
+<br>
+<div style="display: flex">
+    <button style="margin-right: 20%" mat-raised-button (click)="generate()" [disabled]="!dateForm.valid">Generate date from ingredients</button>
+    <p style="color: red">
+        {{datePutAlltogether}}
+    </p>
+</div>
+<hr>
+<h6>Date manipulation</h6>
+<br>
+<div style="display: flex">
+    <mat-radio-group aria-label="Select an option" style="display: flex; margin-right: 5px">
+        <mat-radio-button style="margin-right: 10px" value="1">Add</mat-radio-button>
+        <mat-radio-button value="2">Subtract</mat-radio-button>
+    </mat-radio-group>
+    
+    <form [formGroup]="nrOfDateElementForm" style="margin-right: 5px">
+        <mat-form-field>
+            <input matInput placeholder="Favorite food" formControlName="dElement">
+        </mat-form-field>
+    </form>
+    
+    <button (click)="send()">Kliknij</button>
+</div>
+
+
+
+
+
+
+
+
+
