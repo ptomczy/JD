@@ -44,21 +44,41 @@
 </div>
 <hr>
 <h6>Date manipulation</h6>
+<p>If date not built above current date used!</p>
 <br>
 <div style="display: flex">
-    <mat-radio-group aria-label="Select an option" style="display: flex; margin-right: 5px">
-        <mat-radio-button style="margin-right: 10px" value="1">Add</mat-radio-button>
-        <mat-radio-button value="2">Subtract</mat-radio-button>
+    <mat-radio-group aria-label="Select an option" style="display: flex; margin-right: 5px" [(ngModel)]="addSubtractDecision" (change)="checkTotalValidity()">
+        <mat-radio-button style="margin-right: 10px" value="add">Add</mat-radio-button>
+        <mat-radio-button value="subtract">Subtract</mat-radio-button>
     </mat-radio-group>
     
     <form [formGroup]="nrOfDateElementForm" style="margin-right: 5px">
         <mat-form-field>
-            <input matInput placeholder="Favorite food" formControlName="dElement">
+            <input matInput type="number" placeholder="Amount" formControlName="dElement" (ngModelChange)="checkTotalValidity()"> <!-- (ngModelChange)="checkTotalValidity()-->
         </mat-form-field>
     </form>
+    <mat-radio-group aria-label="Select an option" style="margin-right: 5px" [(ngModel)]="timeRange" (change)="checkTotalValidity()">
+        <mat-radio-button value="days">Days</mat-radio-button>
+        <mat-radio-button value="weeks">Weeks</mat-radio-button>
+        <mat-radio-button value="months">Months</mat-radio-button>
+        <mat-radio-button value="years">Years</mat-radio-button>
+    </mat-radio-group>
     
-    <button (click)="send()">Kliknij</button>
+    <button style="height: 60px" (click)="send()" [disabled]="!dateManipulationButtonActive">Calculate date</button>
 </div>
+<p style="color: red">
+    New date: {{newDate}}
+</p>
+<hr>
+<h6>Differences in dates</h6>
+<p>If both previous dates not set up nothing to admire here!</p>
+<br>
+<mat-list role="list">
+    <mat-list-item role="listitem">Duration (mins): {{durMins}}</mat-list-item>
+    <mat-list-item role="listitem">Duration (hours): {{durHours}}</mat-list-item>
+    <mat-list-item role="listitem">Duration (days): {{durDays}}</mat-list-item>
+  </mat-list>
+
 
 
 

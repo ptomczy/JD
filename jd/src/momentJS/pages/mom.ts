@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import * as moment from 'moment';
 import 'moment/locale/pl'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -17,12 +17,26 @@ export class MomentPage implements OnInit {
     private months: Array<number> = [];
     private years: Array<number> = [];
 
+    private datePartOne: any = null;
+    private datePartTwo: any = null;    
+
     private selectedDayDeletedHint: string = '';
     private datePutAlltogether: string;
 
     private nrOfDateElement: number = null;
     
     private nrOfDateElementForm: FormGroup;
+    private nrOfDateElementFormSuppied: boolean;
+    private addSubtractDecision: string;
+    private timeRange: string;
+    private dateManipulationButtonActive: boolean;
+
+    private newDate: string = "Not set yet";
+
+    private durMins: number | string = "Not possible to calculate yet";
+    private durHours: number | string = "Not possible to calculate yet";
+    private durDays: number | string = "Not possible to calculate yet";
+ 
 
     ngOnInit(){
         moment.locale("pl");
@@ -33,9 +47,18 @@ export class MomentPage implements OnInit {
             yearValue: new FormControl('', Validators.required)
         });
 
+        this.addSubtractDecision = null;
+        this.timeRange = null;
+        this.dateManipulationButtonActive = false;
+        this.nrOfDateElementFormSuppied = false;
+
         this.nrOfDateElementForm = new FormGroup({
-            dElement: new FormControl([''])
-        })
+            dElement: new FormControl(['', Validators.required])
+        });
+
+        // this.nrOfDateElementForm.controls['dElement'].valueChanges.subscribe(() => {
+        //     this.nrOfDateElementFormSuppied = true;
+        // });
 
         for(let i = 1; i < 32; i++) {
             this.days.push({number: i, status: "enabled"});
@@ -63,8 +86,10 @@ export class MomentPage implements OnInit {
 
         let y = this.dateForm.value.yearValue.toString();
 
-        let dateSetUp = m + '-' + d + '-' + y;        
-        this.datePutAlltogether = moment(dateSetUp).format("LL"); 
+        this.datePartOne = m + '-' + d + '-' + y;        
+        this.datePutAlltogether = moment(this.datePartOne).format("LL");
+
+        this.calculateDiffs();
     }
 
     change(inf: {el: string, val: number}) {
@@ -123,7 +148,48 @@ export class MomentPage implements OnInit {
     }
 
     send(){
-        console.log("Wynik: ", this.nrOfDateElementForm.controls.dElement.value);
+
+        this.performDateOperation(this.addSubtractDecision, this.nrOfDateElementForm.value.dElement, this.timeRange);
+        this.calculateDiffs();
     }
 
+    checkTotalValidity(){
+        if(
+            this.addSubtractDecision &&
+            this.nrOfDateElementFormSuppied &&
+            this.timeRange
+        ) {
+            this.dateManipulationButtonActive = true;
+        }
+    }
+
+    performDateOperation(dir: string, amnt: number, rng: any){
+
+        if(!this.datePartOne) {
+            this.datePartOne = this.now;
+        }
+
+        switch(dir){
+            case 'add': {
+                this.datePartTwo = moment(this.datePartOne).add(amnt, rng);
+                this.newDate = moment(this.datePartOne).add(amnt, rng).format("LL");
+                break;
+            }
+            case 'subtract': {
+                this.datePartTwo = moment(this.datePartOne).subtract(amnt, rng);
+                this.newDate = moment(this.datePartOne).subtract(amnt, rng).format("LL");
+                break;
+            }
+        }
+
+    }
+
+    calculateDiffs(){
+        if(this.datePutAlltogether && this.datePartTwo) {
+            let dur = moment(this.datePartOne).diff(this.datePartTwo);
+            this.durMins = Math.ceil(Math.abs(moment.duration(dur).asMinutes()));
+            this.durHours = Math.ceil(Math.abs(moment.duration(dur).asHours()));
+            this.durDays = Math.ceil(Math.abs(moment.duration(dur).asDays()));
+        }
+    }
 }
