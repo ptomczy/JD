@@ -54,7 +54,7 @@
     
     <form [formGroup]="nrOfDateElementForm" style="margin-right: 5px">
         <mat-form-field>
-            <input matInput type="number" placeholder="Amount" formControlName="dElement" (ngModelChange)="checkTotalValidity()"> <!-- (ngModelChange)="checkTotalValidity()-->
+            <input matInput type="number" placeholder="Amount" formControlName="dElement"> <!-- (ngModelChange)="checkTotalValidity()-->
         </mat-form-field>
     </form>
     <mat-radio-group aria-label="Select an option" style="margin-right: 5px" [(ngModel)]="timeRange" (change)="checkTotalValidity()">

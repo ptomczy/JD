@@ -26,7 +26,7 @@ export class MomentPage implements OnInit {
     private nrOfDateElement: number = null;
     
     private nrOfDateElementForm: FormGroup;
-    private nrOfDateElementFormSuppied: boolean;
+    private nrOfDateElementFormSupplied: boolean;
     private addSubtractDecision: string;
     private timeRange: string;
     private dateManipulationButtonActive: boolean;
@@ -50,15 +50,21 @@ export class MomentPage implements OnInit {
         this.addSubtractDecision = null;
         this.timeRange = null;
         this.dateManipulationButtonActive = false;
-        this.nrOfDateElementFormSuppied = false;
+        this.nrOfDateElementFormSupplied = false;
 
         this.nrOfDateElementForm = new FormGroup({
             dElement: new FormControl(['', Validators.required])
         });
 
-        // this.nrOfDateElementForm.controls['dElement'].valueChanges.subscribe(() => {
-        //     this.nrOfDateElementFormSuppied = true;
-        // });
+        this.nrOfDateElementForm.controls['dElement'].valueChanges.subscribe(() => {
+            this.nrOfDateElementFormSupplied = false;
+
+            if(this.nrOfDateElementForm.controls['dElement'].value) {
+                this.nrOfDateElementFormSupplied = true;
+            }
+
+            this.checkTotalValidity();
+        });
 
         for(let i = 1; i < 32; i++) {
             this.days.push({number: i, status: "enabled"});
@@ -156,10 +162,12 @@ export class MomentPage implements OnInit {
     checkTotalValidity(){
         if(
             this.addSubtractDecision &&
-            this.nrOfDateElementFormSuppied &&
+            this.nrOfDateElementFormSupplied &&
             this.timeRange
         ) {
             this.dateManipulationButtonActive = true;
+        } else {
+            this.dateManipulationButtonActive = false;
         }
     }
 
