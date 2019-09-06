@@ -3,17 +3,38 @@ import { DataSetService } from 'src/shared/sevices/data-set.service';
 import * as _ from 'lodash';
 import { CardsInfoService } from 'src/shared/sevices/cards-info.service';
 
+const ldshIssues: Array<{item: string, method: string, desc: string}> = [
+    {item: 'Grouping elements', method: 'groupElements()', desc: 'Two attempts to one issue: grouping by parameter (active: false), then grouping persons by radndom number (in fact using sort funcionality)'}, 
+    {item: 'Sorting elements', method: 'sortElements()', desc: 'Used sorting by descending balance (using reverse method). The second approach regards sorting by two properties: firstly by "isActive" and then "balance". The last one sorts friend by their name ascending.' },
+    {item: 'Using countBy', method: 'countBy()', desc: "Counts by the length of friend's name"},
+    {item: 'Using forEach', method: 'forEach()', desc: 'Two kinds of using forEach: simple forEach and forEach with use of from right' },
+    {item: 'Using every', method: 'every()', desc: 'Returns only those records where the name of the person is "Maria Gonzales"' },
+    {item: 'Using partition', method: 'partition()', desc: 'Divides the set of data in two parts: for having "isActive" on false and on true'},
+    {item: 'Using reduce', method: 'reduce()', desc: 'Summing index numbers' },
+    {item: 'Using size', method: 'size()', desc: 'Information about size of data proceeded'},
+    {item: 'Using findArrayIndex', method: 'findArrayIndex()', desc: 'Returns the index of Olivia Gordon'},
+    {item: 'Using join', method: 'join()', desc: 'Joining all data from array with a specified separator'},
+    {item: 'Using pull', method: 'pull()', desc: 'Removing specified values from array'},
+    {item: 'Using unique', method: 'unique()', desc: 'Giving unique values from attached array'},
+    {item: 'Using without', method: 'without()', desc: 'Original array deprived of value pointed out'}
+];
+
 @Component({
     selector: 'lodash-page',
     templateUrl: 'ldsh.html'
 })
 export class LodashPage implements OnInit {
 
+
+    
     private exArrayNr: Array<number> = [];
     private exArrayString: Array<string> = [];
 
     private data: any;
     private cardsData: any;
+
+    private elementsToChooseFrom: Array<{item: string, method: string, desc: string}>;
+    private elementSelected: string = null;
 
     constructor(private sourceData: DataSetService, private cardInfoData: CardsInfoService){
         this.data = this.sourceData.fullData;
@@ -38,7 +59,6 @@ export class LodashPage implements OnInit {
                     }
                     case -1: {
                         newInsertValue = newInsertValue + String.fromCharCode(_.random(97, 122));
-                        //this.exArrayString.push(String.fromCharCode(_.random(97, 122)));
                         dir = -dir;
                         break;
                     }
@@ -46,38 +66,32 @@ export class LodashPage implements OnInit {
             }
 
             this.exArrayString.push(newInsertValue);
+            this.elementsToChooseFrom = ldshIssues;
 
         })
     }
 
-
     ngOnInit(){
-        //this.ldshTest();
-        //this.groupElements();
-        //this.sortElements();
-        //this.countBy();
-        //this.forEach();
-        //this.every();
-        //this.partition();
-        //this.reduce();
-        //this.size();
-        //this.findArrayIndex();
-        //this.arrays();
-        this.join();
-
-
     }
 
-    ldshTest(){
-        let res = _.get(this.data[0], 'friends', 'Dla tego obiektu nie ma przyjaciół');
-        console.log('Res ldshTest: ', res);
+    assignVal(arg: {item: string, method: string, desc: string}){
+        this.elementSelected = arg.item;
+        console.clear();
+        eval('this.' + arg.method);
+        
+        // let myMethodString = 'this.' + arg.method;
+        // console.log('myMethodString: ', myMethodString);
+
+        // let fn = window[myMethodString];
+        // console.log('fn: ', fn);
+        // //fn.apply();
+
     }
 
     groupElements(){
         let groupByIsActiveFalse = _.groupBy(this.data, {isActive: false});        
         let groupByRandomNumber = _.sortBy(this.data[0].friends, (a) => {
             let issue = Math.random() * 100 * a;
-            console.log('isziu: ', issue);
             return issue;
         })
 
@@ -148,8 +162,22 @@ export class LodashPage implements OnInit {
         console.log('Join wszystkich danych z separatorem: ', res);
     }
 
+    pull(){
+        let exampleArr = [1,2,3,4,5,6,7,8,9];
+        let res = _.pull(exampleArr, 2,3,4);
+        console.log('Pull z exArrayNr to: ', res);
+    }
 
+    unique(){
+        let exampleArr = [1,4,3,2,5,4,1,2,3,67,5,4,3,4,5,6,1,2,4,3,2,5,4,3,2,3,4,2,4,6,3,4,2,3,4,2,3,1,3,2];
+        let res = _.uniq(exampleArr);
+        console.log('SortedUniqe: ', res);
+    }
 
-
+    without(){
+        let exampleArr = [1,4,3,2,5,4,1,2,3,67,5,4,3,4,5,6,1,2,4,3,2,5,4,3,2,3,4,2,4,6,3,4,2,3,4,2,3,1,3,2];
+        let res = _.without(exampleArr, 1);
+        console.log('ExampleArr: ', res);
+    }
 
 }
