@@ -4,19 +4,19 @@ import * as _ from 'lodash';
 import { CardsInfoService } from 'src/shared/sevices/cards-info.service';
 
 const ldshIssues: Array<{item: string, method: string, desc: string}> = [
-    {item: 'Grouping elements', method: 'groupElements()', desc: 'Two attempts to one issue: grouping by parameter (active: false), then grouping persons by radndom number (in fact using sort funcionality)'}, 
-    {item: 'Sorting elements', method: 'sortElements()', desc: 'Used sorting by descending balance (using reverse method). The second approach regards sorting by two properties: firstly by "isActive" and then "balance". The last one sorts friend by their name ascending.' },
-    {item: 'Using countBy', method: 'countBy()', desc: "Counts by the length of friend's name"},
-    {item: 'Using forEach', method: 'forEach()', desc: 'Two kinds of using forEach: simple forEach and forEach with use of from right' },
-    {item: 'Using every', method: 'every()', desc: 'Returns only those records where the name of the person is "Maria Gonzales"' },
-    {item: 'Using partition', method: 'partition()', desc: 'Divides the set of data in two parts: for having "isActive" on false and on true'},
-    {item: 'Using reduce', method: 'reduce()', desc: 'Summing index numbers' },
-    {item: 'Using size', method: 'size()', desc: 'Information about size of data proceeded'},
-    {item: 'Using findArrayIndex', method: 'findArrayIndex()', desc: 'Returns the index of Olivia Gordon'},
-    {item: 'Using join', method: 'join()', desc: 'Joining all data from array with a specified separator'},
-    {item: 'Using pull', method: 'pull()', desc: 'Removing specified values from array'},
-    {item: 'Using unique', method: 'unique()', desc: 'Giving unique values from attached array'},
-    {item: 'Using without', method: 'without()', desc: 'Original array deprived of value pointed out'}
+    {item: 'Grouping elements', method: 'groupElements', desc: 'Two attempts to one issue: grouping by parameter (active: false), then grouping persons by radndom number (in fact using sort funcionality)'}, 
+    {item: 'Sorting elements', method: 'sortElements', desc: 'Used sorting by descending balance (using reverse method). The second approach regards sorting by two properties: firstly by "isActive" and then "balance". The last one sorts friend by their name ascending.' },
+    {item: 'Using countBy', method: 'countBy', desc: "Counts by the length of friend's name"},
+    {item: 'Using forEach', method: 'forEach', desc: 'Two kinds of using forEach: simple forEach and forEach with use of from right' },
+    {item: 'Using every', method: 'every', desc: 'Returns only those records where the name of the person is "Maria Gonzales"' },
+    {item: 'Using partition', method: 'partition', desc: 'Divides the set of data in two parts: for having "isActive" on false and on true'},
+    {item: 'Using reduce', method: 'reduce', desc: 'Summing index numbers' },
+    {item: 'Using size', method: 'size', desc: 'Information about size of data proceeded'},
+    {item: 'Using findArrayIndex', method: 'findArrayIndex', desc: 'Returns the index of Olivia Gordon'},
+    {item: 'Using join', method: 'join', desc: 'Joining all data from array with a specified separator'},
+    {item: 'Using pull', method: 'pull', desc: 'Removing specified values from array'},
+    {item: 'Using unique', method: 'unique', desc: 'Giving unique values from attached array'},
+    {item: 'Using without', method: 'without', desc: 'Original array deprived of value pointed out'}
 ];
 
 @Component({
@@ -77,15 +77,8 @@ export class LodashPage implements OnInit {
     assignVal(arg: {item: string, method: string, desc: string}){
         this.elementSelected = arg.item;
         console.clear();
-        eval('this.' + arg.method);
-        
-        // let myMethodString = 'this.' + arg.method;
-        // console.log('myMethodString: ', myMethodString);
-
-        // let fn = window[myMethodString];
-        // console.log('fn: ', fn);
-        // //fn.apply();
-
+        //eval('this.' + arg.method);
+        this[arg.method]();
     }
 
     groupElements(){

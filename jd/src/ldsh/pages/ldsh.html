@@ -1,5 +1,5 @@
-<h6>What effect you wanted to admire?</h6>
-<mat-form-field>
+<h6 >What effect you wanted to admire?</h6>
+<mat-form-field matBadge="c" matBadgePosition="after">
     <mat-label>Select one please...</mat-label>
     <mat-select>
       <mat-option [value]="el" (click)="assignVal(el)"*ngFor="let el of elementsToChooseFrom">{{el.item}}</mat-option>
