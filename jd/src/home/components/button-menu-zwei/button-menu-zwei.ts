@@ -41,7 +41,7 @@ const MILESTONES: Array<Imilestone> = [
     {name: 'Typescript poziom średni', sub: 'Lodash', presub: 'Grupowanie', adr: 'lodash'},
     {name: 'Typescript poziom średni', sub: 'Lodash', presub: 'Sortowanie', adr: 'lodash'},
     {name: 'Typescript poziom średni', sub: 'Angular', presub: 'Obsługa funkcjonalności w odpowiednich zdarzeniach', adr: 'abstract'},
-    {name: 'Typescript poziom średni', sub: 'Angular', presub: 'Pipe', adr: 'abstract'},
+    {name: 'Typescript poziom średni', sub: 'Angular', presub: 'Pipe', adr: 'pipes'},
     {name: 'Typescript poziom średni', sub: 'Angular', presub: 'Providery', adr: 'abstract'},
     {name: 'Typescript poziom średni', sub: 'Angular', presub: 'Wstrzykiwanie zależności, zrozumienie w którym miejsciu co wstrzyknąć', adr: 'abstract'},
     {name: 'Typescript poziom średni', sub: 'Angular', presub: 'Ujęcie co się da w odpowiednim module', adr: 'abstract'},

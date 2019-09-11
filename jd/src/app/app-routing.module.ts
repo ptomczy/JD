@@ -16,7 +16,8 @@ const routes: Routes = [
   {path: 'asynchro', loadChildren: () => import('src/asynchro/asynchro.module').then(m => m.AsynchroModule)},
   {path: 'rxjs', loadChildren: () => import('src/rxjs/rxjs.module').then(m => m.RxjsModule)},
   {path: 'moment', loadChildren: () => import('src/momentJS/mom.module').then(m => m.MomModule)},
-  {path: 'lodash', loadChildren: () => import('src/ldsh/ldsh.module').then(m => m.LodashModule)}
+  {path: 'lodash', loadChildren: () => import('src/ldsh/ldsh.module').then(m => m.LodashModule)},
+  {path: 'pipes', loadChildren: () => import('src/angular-pipe/angular-pipe.module').then(m => m.AngularPipeModule)}
 ];
 
 @NgModule({

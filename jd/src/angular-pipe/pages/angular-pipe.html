@@ -1,0 +1,27 @@
+<h6>Set of various pipes</h6>
+<div style="display: flex; justify-content: space-between">
+    <p>Unfold to display details</p>
+    <p style="margin-right: 5px">Current time: {{now | date:'H:mm:ss'}}</p>
+</div>
+
+<hr>
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let el of myElements" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{el.name}}
+            </mat-panel-title>
+
+            <mat-panel-description *ngIf="el.pipeType == 'JSONObject'">
+                {{ el.valToChange | json }}
+             </mat-panel-description>
+             <mat-panel-description *ngIf="el.pipeType == 'dict'">
+                {{ el.valToChange | i18nSelect : dict }}
+             </mat-panel-description>
+             <mat-panel-description *ngIf="el.pipeType == 'number'">
+                {{ el.valToChange | bubasPipe : el.pipeType : el.param }}
+             </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>{{el.desc}}</p>
+    </mat-expansion-panel>
+</mat-accordion>
