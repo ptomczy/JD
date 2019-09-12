@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from "@angular/core";
     name: 'bubasPipe'
 })
 export class BubasPipe implements PipeTransform {
-    transform(arg: number, type: string, addVal?: any) {
+    transform(arg: any, type: string, addVal?: any) {
         let result;
 
         switch(type){
@@ -12,8 +12,9 @@ export class BubasPipe implements PipeTransform {
                 result = arg * addVal;
                 break;
             }
-            case 'JSONObject': {
-                result = arg;
+            case 'krypto': {
+                console.log(arg.split(""));
+                result = 'No działa, kurwa!';
                 break;
             }
             default: {

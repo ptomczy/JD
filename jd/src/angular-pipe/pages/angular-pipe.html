@@ -11,17 +11,33 @@
             <mat-panel-title>
                 {{el.name}}
             </mat-panel-title>
-
+            <mat-panel-description *ngIf="el.pipeType == 'percentage'">
+                {{ el.valToChange | percent : '2.0-0'}}
+             </mat-panel-description>
             <mat-panel-description *ngIf="el.pipeType == 'JSONObject'">
                 {{ el.valToChange | json }}
              </mat-panel-description>
              <mat-panel-description *ngIf="el.pipeType == 'dict'">
-                {{ el.valToChange | i18nSelect : dict }}
+                {{ selectedGrammaticalCase | i18nSelect : dict }}
              </mat-panel-description>
              <mat-panel-description *ngIf="el.pipeType == 'number'">
                 {{ el.valToChange | bubasPipe : el.pipeType : el.param }}
              </mat-panel-description>
+             <mat-panel-description *ngIf="el.pipeType == 'krypto'">
+                {{ el.valToChange | bubasPipe : el.pipeType }}
+             </mat-panel-description>
         </mat-expansion-panel-header>
-        <p>{{el.desc}}</p>
+        <p *ngIf="el.pipeType != 'dict'">{{el.desc}}</p>
+        <div *ngIf="el.pipeType == 'dict'">
+            <p>{{el.desc}}</p>
+            <br>
+            <mat-form-field>
+                <mat-label>Select a grammatical case</mat-label>
+                <mat-select [(value)]="selectedGrammaticalCase">
+                  <mat-option *ngFor="let case of dictKeys" [value]="case" (click)="updateMyElementsForDictionary(case)">{{case}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        
     </mat-expansion-panel>
 </mat-accordion>
