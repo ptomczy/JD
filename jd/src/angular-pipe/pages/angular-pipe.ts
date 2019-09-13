@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, AfterViewChecked, AfterContentChecked, OnChanges, DoCheck} from "@angular/core";
 import * as moment from 'moment';
+import { FormControl } from '@angular/forms';
 
 export enum pType {
     string = 'string', 
@@ -40,6 +41,9 @@ export class AngularPipePage implements OnInit, OnDestroy{
     private dict;
     private dictKeys: Array<string> = [];
     private selectedGrammaticalCase: string;
+    private txt = new FormControl();
+    private txtToEncrypt: string;
+    private cryptoCoeff: number;
 
     constructor(){
         this.intrvl = setInterval(() => {
@@ -50,6 +54,9 @@ export class AngularPipePage implements OnInit, OnDestroy{
     ngOnInit(){
         this.panelOpenState = false;
         this.dict = dict;
+        this.txtToEncrypt = '';
+        this.cryptoCoeff = 2;
+
         
         for(let i in dict) {
             this.dictKeys.push(i);
@@ -62,12 +69,18 @@ export class AngularPipePage implements OnInit, OnDestroy{
             {name: 'Convert to JSON', pipeType: pType.JSONObject, valToChange: exJSON, param: '', desc: 'Delivered const converted onto JSON format data'},
             {name: 'Dictionary', pipeType: pType.dictionary, valToChange: null, param: '', desc: 'Displaying appropriate set of questions per selected grammatical case '},
             {name: 'Percentage', pipeType: pType.percentage, valToChange: 0.54, param: null, desc: 'Given argument presented as percentage'},
-            {name: 'Own kryptography', pipeType: pType.krypto, valToChange: 'TESTowe', param: '', desc: 'Applied hidden code: each character replaced by another one in line with a secret algorithm'}
+            {name: 'Own kryptography', pipeType: pType.krypto, valToChange: null, param: '', desc: 'Applied hidden code: each character replaced by another one in line with a secret algorithm'}
         ];
+
     }
 
     updateMyElementsForDictionary(el: string){
         this.selectedGrammaticalCase = el;
+    }
+
+    textChanged(){
+        //console.log('Tekst po zmianie: ', this.txt.value);
+        this.txtToEncrypt = this.txt.value;
     }
 
     ngOnDestroy(){

@@ -24,10 +24,10 @@
                 {{ el.valToChange | bubasPipe : el.pipeType : el.param }}
              </mat-panel-description>
              <mat-panel-description *ngIf="el.pipeType == 'krypto'">
-                {{ el.valToChange | bubasPipe : el.pipeType }}
+                {{ txtToEncrypt | bubasPipe : el.pipeType : cryptoCoeff }}
              </mat-panel-description>
         </mat-expansion-panel-header>
-        <p *ngIf="el.pipeType != 'dict'">{{el.desc}}</p>
+        <p *ngIf="el.pipeType != 'dict' && el.pipeType != 'krypto'">{{el.desc}}</p>
         <div *ngIf="el.pipeType == 'dict'">
             <p>{{el.desc}}</p>
             <br>
@@ -37,6 +37,25 @@
                   <mat-option *ngFor="let case of dictKeys" [value]="case" (click)="updateMyElementsForDictionary(case)">{{case}}</mat-option>
                 </mat-select>
               </mat-form-field>
+        </div>
+        <div *ngIf="el.pipeType == 'krypto'">
+            <p>{{el.desc}}</p>
+            <br>
+            <div style="justify-content: space-between">
+                <div>
+                    <mat-label style="margin-right: 10px">
+                        Coefficient
+                    </mat-label>
+                    <mat-form-field style="width: 40px">
+                        <input matInput type="number" [(ngModel)]="cryptoCoeff">
+                    </mat-form-field>
+                </div>
+                <mat-form-field>
+                    <textarea matInput placeholder="Enter your text to encrypt" [formControl]="txt" (keyup)="textChanged()"></textarea>
+                </mat-form-field>
+            
+            </div>
+
         </div>
         
     </mat-expansion-panel>
