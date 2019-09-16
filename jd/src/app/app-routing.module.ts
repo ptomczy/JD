@@ -17,7 +17,8 @@ const routes: Routes = [
   {path: 'rxjs', loadChildren: () => import('src/rxjs/rxjs.module').then(m => m.RxjsModule)},
   {path: 'moment', loadChildren: () => import('src/momentJS/mom.module').then(m => m.MomModule)},
   {path: 'lodash', loadChildren: () => import('src/ldsh/ldsh.module').then(m => m.LodashModule)},
-  {path: 'pipes', loadChildren: () => import('src/angular-pipe/angular-pipe.module').then(m => m.AngularPipeModule)}
+  {path: 'pipes', loadChildren: () => import('src/angular-pipe/angular-pipe.module').then(m => m.AngularPipeModule)},
+  {path: 'providers', loadChildren: () => import('src/providers/providers.module').then(m => m.ProvidersModule)}
 ];
 
 @NgModule({
