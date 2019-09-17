@@ -1,16 +1,16 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 
-const url: string = 'http://localhost:8081';
+const url: string = 'http://localhost:8081/komp';
 
 @Injectable()
 export class ProvidersService {
-    constructor(private http: HttpClient){
+    constructor(private httpClient: HttpClient){
     }
 
     getInfo(){
-        this.http.get(url);
-        return null;
+        let inf = this.httpClient.get(url);
+        return inf;
     }
 
 }

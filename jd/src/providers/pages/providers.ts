@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { HttpClientModule } from '@angular/common/http';
+import { ProvidersService } from '../services/providers.service';
 
 @Component({
     selector: 'providers',
@@ -7,11 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class ProvidersPage {
 
-    constructor(private http: HttpClientModule){
+    constructor(private providersService: ProvidersService){
 
     }
 
-    testMethod(){
-
+    sendGetMethod(){
+        let res = this.providersService.getInfo().subscribe(m => {
+            
+            console.log(m);
+        });
     }
 }
