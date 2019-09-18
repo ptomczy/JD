@@ -17,4 +17,8 @@ export class ProvidersPage {
             console.log(m);
         });
     }
+
+    sendPostMethod(){
+        this.providersService.postInfo();
+    }
 }
