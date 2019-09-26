@@ -1,1 +1,30 @@
-<h6>AAnimations Page</h6>
+<h6>Animations Page</h6>
+<br>
+<div style="display: flex">
+    <button style="margin-right: 5px" mat-raised-button (click)="onAnimateOne()">Trigger simple animation</button>
+    <div 
+        style="width: 100px; height: 20px"
+        [@divState]="state">        
+    </div>
+</div>
+<br>
+<div style="display: flex">
+    <button style="margin-right: 5px" mat-raised-button (click)="onAnimateTwo()">Trigger wilder animation</button>
+    <div 
+        style="width: 100px; height: 20px"
+        [@wildState]="wildState">        
+    </div>
+</div>
+<br>
+<div style="display: flex">
+    <form [formGroup]="inputTxt">
+        <mat-form-field>
+            <input matInput placeholder="Enter your string" formControlName="txt">
+        </mat-form-field>
+    </form>
+    <button style="margin-right: 5px" mat-raised-button (click)="onAnimateThree()" [disabled]="buttonDisabled">Add animated object</button>
+</div>
+<ul>
+    <li [@objVisible] *ngFor="let el of objectsNamesToBeAnimated">{{el}}<i (click)="removeItem(el)" class="material-icons">cancel</i></li>
+    
+</ul>
