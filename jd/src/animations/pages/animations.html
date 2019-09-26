@@ -19,7 +19,7 @@
 <div style="display: flex">
     <form [formGroup]="inputTxt">
         <mat-form-field>
-            <input matInput placeholder="Enter your string" formControlName="txt">
+            <input matInput placeholder="Enter your string" formControlName="txt" (keyup.enter)="onAnimateThree()">
         </mat-form-field>
     </form>
     <button style="margin-right: 5px" mat-raised-button (click)="onAnimateThree()" [disabled]="buttonDisabled">Add animated object</button>

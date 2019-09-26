@@ -110,8 +110,6 @@ export class AngularAnimationsPage implements OnInit{
 
     removeItem(itm: string){
         let res = this.objectsNamesToBeAnimated.findIndex(x => x == itm);
-        console.log(res);
         this.objectsNamesToBeAnimated.splice(res, 1);
-        console.log(this.objectsNamesToBeAnimated);
     }
 }
