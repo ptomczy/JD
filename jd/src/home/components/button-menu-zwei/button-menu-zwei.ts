@@ -47,6 +47,8 @@ const MILESTONES: Array<Imilestone> = [
     {name: 'Typescript poziom średni', sub: 'Angular', presub: 'Ujęcie co się da w odpowiednim module', adr: 'abstract'},
     {name: 'Typescript poziom średni', sub: 'Angular', presub: 'Obsługa routingu', adr: 'abstract'},
     {name: 'Typescript poziom średni', sub: 'Ionic', presub: 'Użycie komponentów Ionica', adr: 'abstract'},
+    {name: 'Typescript poziom średni', sub: 'Others', presub: 'Użycie viewChild i contentChild', adr: 'viewContentChild'},
+    {name: 'Typescript poziom średni', sub: 'Others', presub: 'Animations', adr: 'angularAnimations'}
 ]
 
 @Component({

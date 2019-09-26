@@ -9,12 +9,17 @@ export class ProvidersService {
     }
 
     getInfo(){
-        let inf = this.httpClient.get(url + 'romek/' + 'cośTamJakoParametr');
+        let inf = this.httpClient.get(url + 'romek/' + 'Moj_Parametr');
         return inf;
     }
 
+    getSth(){
+        let sth = this.httpClient.get(url + 'getThree');
+        return sth;
+    }
+
     postInfo(){
-        let inf = this.httpClient.post(url + 'pst/', {"val": "From outside"}).subscribe(
+        let inf = this.httpClient.post(url + 'pst', {"sth": "Marcinek"}).subscribe(
             (val) => {
                 console.log("Piękny zwrot o wyniku: ", val);
             },

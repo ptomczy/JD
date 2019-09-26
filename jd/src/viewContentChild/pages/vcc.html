@@ -1,0 +1,32 @@
+<div style="display: flex">
+    <p style="margin-right: 10px">Recalled: </p>
+    <vcc-one inputValueOnFirstVCCComponent="Text exported to First Child from parent component">
+        <div style="display: flex">
+            <p #insideContent style="margin-right: 5px">Cool paragraph placed inside vcc-one (as element of ng-content)</p>
+            <i class="material-icons" [matTooltip]="ngContentInfo">priority_high</i>
+        </div>
+
+    </vcc-one>
+</div>
+
+
+<br>
+<div>
+    <button mat-raised-button (click)="changeRef()">Click to change the paragraph (via reference)</button>
+    
+</div>
+
+<p #myRef style="font-style: italic">
+    Paragraph to change by reference
+</p>
+<hr>
+<div style="display: flex">
+    <p style="margin-right: 10px">List of second VCC Component children</p>
+    <i class="material-icons" [matTooltip]="viewChildrenInfo" >help</i>
+</div>
+
+<div >
+    <vcc-second *ngFor="let el of elements" [inputVariable]="el">
+
+    </vcc-second>
+</div>
