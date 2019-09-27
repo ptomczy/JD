@@ -20,7 +20,8 @@ const routes: Routes = [
   {path: 'pipes', loadChildren: () => import('src/angular-pipe/angular-pipe.module').then(m => m.AngularPipeModule)},
   {path: 'providers', loadChildren: () => import('src/providers/providers.module').then(m => m.ProvidersModule)},
   {path: 'viewContentChild', loadChildren: () => import('src/viewContentChild/vcc.module').then(m => m.VCCModule)},
-  {path: 'angularAnimations', loadChildren: () => import('src/animations/animations.module').then(m => m.AnimationsModule)}
+  {path: 'angularAnimations', loadChildren: () => import('src/animations/animations.module').then(m => m.AnimationsModule)},
+  {path: 'forms', loadChildren: () => import('src/forms/forms.module').then(m => m.RealFormsModule)}
 ];
 
 @NgModule({

@@ -1,0 +1,38 @@
+<h6>Form field to process</h6>
+<div [formGroup]="myForm" style="">
+    <mat-form-field>
+        <input 
+            formControlName="inputOne" 
+            matInput 
+            placeholder="Write something" 
+            (keyup.enter)="acceptIncomintText()"
+            >
+    </mat-form-field>
+    <mat-form-field>
+        <input 
+            formControlName="inputTwo" 
+            matInput 
+            placeholder="Write something" 
+            (keyup.enter)="acceptIncomintText()"
+            >
+    </mat-form-field>
+</div>
+<br>
+<div [formGroup]="myOtherForm">
+    <mat-form-field>
+        <input
+            formControlName="inputThree"
+            matInput
+            placeholder="Write something"
+        >
+    </mat-form-field>
+    <mat-form-field>
+        <input
+            formControlName="inputFour"
+            matInput
+            placeholder="Write something"
+        >
+    </mat-form-field>
+</div>
+<br>
+<button mat-raised-button (click)="buttonClicked()">Start action</button>
