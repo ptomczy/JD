@@ -1,0 +1,15 @@
+<h6>Change detector page</h6>
+<input #inputElement type="text" placeholder="Enter new string element">
+<button mat-raised-button (click)="upgradeByPush(inputElement.value)">Add new element</button>
+<hr>
+<br>
+<p>To dla myData</p>
+<cd_one_component [incomingData]="myData"></cd_one_component>
+<hr>
+<br>
+<p>To dla myOtherData</p>
+<cd_one_component [incomingData]="myOtherData"></cd_one_component>
+<hr>
+<br>
+<p>To dla myExtraData</p>
+<cd_one_component [incomingExtraData]="myExtraData"></cd_one_component>

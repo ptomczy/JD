@@ -21,7 +21,8 @@ const routes: Routes = [
   {path: 'providers', loadChildren: () => import('src/providers/providers.module').then(m => m.ProvidersModule)},
   {path: 'viewContentChild', loadChildren: () => import('src/viewContentChild/vcc.module').then(m => m.VCCModule)},
   {path: 'angularAnimations', loadChildren: () => import('src/animations/animations.module').then(m => m.AnimationsModule)},
-  {path: 'forms', loadChildren: () => import('src/forms/forms.module').then(m => m.RealFormsModule)}
+  {path: 'forms', loadChildren: () => import('src/forms/forms.module').then(m => m.RealFormsModule)},
+  {path: 'cd', loadChildren: () => import('src/changeDetector/cd.module').then(m => m.CDModule)}
 ];
 
 @NgModule({
